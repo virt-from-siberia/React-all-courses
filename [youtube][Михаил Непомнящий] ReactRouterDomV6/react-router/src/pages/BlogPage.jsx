@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export const BlogPage = () => {
   const [posts, setPosts] = useState([]);
+  console.log("useLocation", useLocation());
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/posts")
@@ -13,6 +14,7 @@ export const BlogPage = () => {
   return (
     <>
       <h1>BlogPage</h1>
+      <Link to="/posts/new">Add new post</Link>
       {posts.map((post) => {
         return (
           <Link key={post.id} to={`${post.id}`}>
