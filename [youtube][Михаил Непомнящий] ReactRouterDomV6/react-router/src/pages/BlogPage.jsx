@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
+
+import { BlogFilter } from "../components/BlogFilter";
 
 export const BlogPage = () => {
   const [posts, setPosts] = useState([]);
-  console.log("useLocation", useLocation());
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const postQuery = searchParams.get("post") || "";
+  const latest = searchParams.get("latest") || false;
+
+  const startsFrom = latest ? 80 : 1;
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/posts")
@@ -14,14 +21,23 @@ export const BlogPage = () => {
   return (
     <>
       <h1>BlogPage</h1>
+      <BlogFilter
+        setSearchParams={setSearchParams}
+        postQuery={postQuery}
+        latest={latest}
+      />
       <Link to="/posts/new">Add new post</Link>
-      {posts.map((post) => {
-        return (
-          <Link key={post.id} to={`${post.id}`}>
-            <li>{post.title}</li>
-          </Link>
-        );
-      })}
+      {posts
+        .filter(
+          (post) => post.title.includes(postQuery) && post.id >= startsFrom
+        )
+        .map((post) => {
+          return (
+            <Link key={post.id} to={`${post.id}`}>
+              <li>{post.title}</li>
+            </Link>
+          );
+        })}
     </>
   );
 };
