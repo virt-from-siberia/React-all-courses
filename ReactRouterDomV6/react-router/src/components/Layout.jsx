@@ -4,9 +4,14 @@ export const Layout = () => {
   return (
     <>
       <header>
-        <Link to="/">Home</Link>
-        <Link to="/posts">Blog</Link>
-        <Link to="/about">About</Link>
+        <NavLink
+          to="/"
+          className={({ isActive }) => (isActive ? "active" : "")}
+        >
+          Home
+        </NavLink>
+        <NavLink to="/posts">Posts</NavLink>
+        <NavLink to="/about">About</NavLink>
       </header>
       <main className="container">
         <Outlet />
