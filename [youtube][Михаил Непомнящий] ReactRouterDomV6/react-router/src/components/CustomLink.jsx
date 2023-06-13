@@ -1,10 +1,8 @@
 import React from "react";
-import { NavLink, Link, useMatch } from "react-router-dom";
+import { Link, useMatch } from "react-router-dom";
 
 export const CustomLink = ({ children, to, ...rest }) => {
-  const match = useMatch(to);
-
-  console.log("match", { match });
+  const match = useMatch({ path: to, end: to.length === 1 });
 
   return (
     <Link
