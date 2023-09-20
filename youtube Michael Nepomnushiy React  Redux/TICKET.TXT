@@ -1,1 +1,1 @@
-3 video 17 MINUTES- RTK Query или альтернативный Redux по работе с API
+4 video Синхронизация Redux и localStorage с redux-persist
