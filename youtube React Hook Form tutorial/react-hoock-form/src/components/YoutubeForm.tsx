@@ -46,8 +46,16 @@ export const YouTubeForm = () => {
             id="email"
             {...register("email", {
               pattern: {
-                value: /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/,
+                value: /^[\w\.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/,
                 message: "Invalid email address",
+              },
+              validate: {
+                blackList: (fieldValue) => {
+                  return (
+                    !fieldValue.endsWith("mail.ru") ||
+                    "this domain is not supported"
+                  );
+                },
               },
             })}
           />
