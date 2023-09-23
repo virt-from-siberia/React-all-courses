@@ -1,6 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect } from "react";
-import { Controller, useForm, useFieldArray } from "react-hook-form";
+import {
+  Controller,
+  useForm,
+  useFieldArray,
+  FieldErrors,
+} from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
 import InputMask from "react-input-mask";
 
@@ -44,6 +49,8 @@ export const YouTubeForm = () => {
       age: 0,
       dob: new Date(),
     },
+    // Валидация работает если поле затронто
+    mode: "onBlur",
   });
 
   // const form = useForm<FormValuesType>({
@@ -61,16 +68,59 @@ export const YouTubeForm = () => {
   //   },
   // });
 
-  const { register, handleSubmit, control, formState, watch, getValues } = form;
-  const { errors } = formState;
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState,
+    watch,
+    getValues,
+    setValue,
+    reset,
+    trigger,
+  } = form;
+
+  const {
+    errors,
+    touchedFields,
+    dirtyFields,
+    isDirty,
+    isValid,
+    isSubmitting,
+    isSubmitted,
+    isSubmitSuccessful,
+    submitCount,
+  } = formState;
 
   const { fields, append, remove } = useFieldArray({
     name: "phNumbers",
     control,
   });
 
+  console.log("touchedFields", touchedFields);
+  console.log("dirtyFields", dirtyFields);
+  console.log("isDirty", isDirty);
+  console.log("isValid", isValid);
+
+  console.log({ isSubmitting });
+  console.log({ isSubmitted });
+  console.log({ isSubmitSuccessful });
+  console.log({ submitCount });
+
   const handleGetValues = () => {
     console.log("Get values", getValues(["social", "channel", "username"]));
+  };
+
+  const handleSetValues = () => {
+    setValue("username", "set username from handleSetValues", {
+      shouldValidate: true,
+      shouldDirty: true,
+      shouldTouch: true,
+    });
+  };
+
+  const onError = (error: FieldErrors<FormValuesType>) => {
+    console.log("error", error);
   };
 
   const onSubmit = (data: FormValuesType) => {
@@ -85,6 +135,11 @@ export const YouTubeForm = () => {
     return () => subscription.unsubscribe();
   }, [watch]);
 
+  useEffect(() => {
+    // сброс формы после успешной отправки
+    if (isSubmitSuccessful) reset();
+  }, [reset, isSubmitSuccessful]);
+
   const watchUsername = watch(["username", "email"]);
 
   renderCount++;
@@ -93,7 +148,7 @@ export const YouTubeForm = () => {
     <div>
       <h1>YouTube Form ({renderCount / 2})</h1>
       <h2>Watched value: {watchUsername}</h2>
-      <form onSubmit={handleSubmit(onSubmit)} noValidate>
+      <form onSubmit={handleSubmit(onSubmit, onError)} noValidate>
         <div className="form-control">
           <label htmlFor="username">Username</label>
           <input
@@ -124,6 +179,13 @@ export const YouTubeForm = () => {
                     "this domain is not supported"
                   );
                 },
+                emailAvailable: async (fieldValue) => {
+                  const response = await fetch(
+                    `https://jsonplaceholder.typicode.com/users?email=${fieldValue}`
+                  );
+                  const data = await response.json();
+                  return data.length == 0 || "Email already exists";
+                },
               },
             })}
           />
@@ -147,7 +209,14 @@ export const YouTubeForm = () => {
 
         <div className="form-control">
           <label htmlFor="twitter">Twitter</label>
-          <input type="text" id="twitter" {...register("social.twitter")} />
+          <input
+            type="text"
+            id="twitter"
+            {...register("social.twitter", {
+              // disabled: watch("channel") === "",
+              required: "Enter twitter",
+            })}
+          />
         </div>
 
         <div className="form-control">
@@ -237,7 +306,7 @@ export const YouTubeForm = () => {
         </div>
 
         <div className="form-control">
-          <label htmlFor="channel">Channel</label>
+          <label htmlFor="dob">Channel</label>
           <input
             type="date"
             id="dob"
@@ -245,16 +314,25 @@ export const YouTubeForm = () => {
               valueAsDate: true,
               required: {
                 value: true,
-                message: "Channel is required",
+                message: "Date is required",
               },
             })}
           />
           <p className="error">{errors.dob?.message}</p>
         </div>
 
-        <button>Submit</button>
+        <button disabled={!isDirty || !isValid || isSubmitting}>Submit</button>
+        <button type="button" onClick={() => reset()}>
+          Reset
+        </button>
         <button type="button" onClick={handleGetValues}>
           Get values
+        </button>
+        <button type="button" onClick={handleSetValues}>
+          Set values
+        </button>
+        <button type="button" onClick={() => trigger()}>
+          Validate
         </button>
       </form>
       <DevTool control={control} />

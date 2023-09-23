@@ -10,10 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.46.1",
-    "react-input-mask": "^2.0.4"
+    "react-input-mask": "^2.0.4",
+    "yap": "^0.0.2",
+    "yup": "^1.3.0",
+    "zod": "^3.22.2"
   },
   "devDependencies": {
     "@hookform/devtools": "^4.3.1",

@@ -1,22 +1,38 @@
-import { useState } from "react";
-
 import { YouTubeForm } from "./components/YoutubeForm.js";
+import { YapValidationForm } from "./components/YapValidationForm.js";
 
 import "./App.css";
+import { ZodValidationForm } from "./components/ZodYouTubeForm.js";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
       <div
         style={{
           display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
         }}
       >
-        <YouTubeForm />
+        <div
+          style={{
+            marginRight: "30px",
+            paddingRight: "30px",
+            borderRight: "1px solid gray",
+          }}
+        >
+          <YouTubeForm />
+        </div>
+        <div
+          style={{
+            marginRight: "30px",
+            paddingRight: "30px",
+            borderRight: "1px solid gray",
+          }}
+        >
+          <YapValidationForm />
+        </div>
+        <div>
+          <ZodValidationForm />
+        </div>
       </div>
     </>
   );

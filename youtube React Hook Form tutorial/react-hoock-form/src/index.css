@@ -36,3 +36,7 @@ input[type="email"] {
   border-radius: 4px;
   margin-bottom: 5px;
 }
+
+*:disabled {
+  opacity: 0.3;
+}
