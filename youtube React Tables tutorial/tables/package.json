@@ -10,9 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "date-fns": "^2.30.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-table": "^7.8.0"
+    "react-table": "^7.8.0",
+    "regenerator-runtime": "^0.14.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

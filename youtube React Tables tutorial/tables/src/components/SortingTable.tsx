@@ -1,14 +1,15 @@
 import React, { useMemo } from "react";
 import { useTable, useSortBy } from "react-table";
 import MOCK_DATA from "./MOCK_DATA.json";
-import { COLUMNS, GROUP_COLUMNS } from "./colums";
+import { GROUP_COLUMNS } from "./colums";
 
 import "./table.css";
 
-export const BasicTable = () => {
-  const columns = useMemo(() => COLUMNS, []);
+export const SortingTable = () => {
+  const columns = useMemo(() => GROUP_COLUMNS, []);
   const data = useMemo(() => MOCK_DATA, []);
 
+  console.log("data", data);
   const tableInstance = useTable(
     {
       columns,
@@ -32,13 +33,12 @@ export const BasicTable = () => {
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column) => (
-              <th
-                {...column.getHeaderProps({
-                  style: { minWidth: column.minWidth, width: column.width },
-                })}
-              >
+              <th {...column.getHeaderProps(column.getSortByToggleProps())}>
                 {column.render("Header")}
-                {/* <span>{column.isSortedDesc ? " 🔽" : " 🔼"}</span> */}
+                {/* <span>
+                  {column.isSorted ? (column.isSortedDesc ? " 🔽" : " 🔼") : ""}
+                </span> */}
+                <span>{column.isSortedDesc ? " 🔽" : " 🔼"}</span>
               </th>
             ))}
           </tr>
@@ -50,19 +50,7 @@ export const BasicTable = () => {
           return (
             <tr {...row.getRowProps()}>
               {row.cells.map((cell) => {
-                console.log("cell.column", cell.column);
-                return (
-                  <td
-                    {...cell.getCellProps({
-                      style: {
-                        minWidth: cell.column.minWidth,
-                        width: cell.column.width,
-                      },
-                    })}
-                  >
-                    {cell.render("Cell")}
-                  </td>
-                );
+                return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
               })}
             </tr>
           );
