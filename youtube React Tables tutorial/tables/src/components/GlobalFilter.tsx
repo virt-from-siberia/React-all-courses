@@ -6,7 +6,7 @@ export const GlobalFilter = ({ filter, setFilter }) => {
 
   const onChange = useAsyncDebounce((val) => {
     setFilter(val || undefined);
-  }, 1000);
+  }, 500);
 
   return (
     <span>
