@@ -6,10 +6,13 @@ export const COLUMNS = [
     Header: "Id",
     Footer: "Id",
     accessor: "id",
-    // maxWidth: 50,
-    // minWidth: 50,
-    // width: 50,
+    maxWidth: 50,
+    minWidth: 50,
+    width: 50,
     disableFilters: true,
+    sticky: "left",
+    className: "frozen",
+    headerClassName: "frozen",
   },
   {
     Header: "First Name",
@@ -18,6 +21,7 @@ export const COLUMNS = [
     // maxWidth: 350,
     // minWidth: 350,
     // width: 350,
+    sticky: "left",
   },
   {
     Header: "Last Name",
@@ -26,6 +30,7 @@ export const COLUMNS = [
     // maxWidth: 250,
     // minWidth: 250,
     // width: 250,
+    sticky: "left",
   },
   {
     Header: "Date of Birth",
@@ -53,6 +58,16 @@ export const COLUMNS = [
     // maxWidth: 50,
     // minWidth: 50,
     // width: 50,
+  },
+  {
+    Header: "Email",
+    Footer: "Email",
+    accessor: "email",
+  },
+  {
+    Header: "Age",
+    Footer: "Age",
+    accessor: "age",
   },
 ];
 
