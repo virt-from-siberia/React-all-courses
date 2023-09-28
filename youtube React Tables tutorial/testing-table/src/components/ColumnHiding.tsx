@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import { useTable, useSortBy } from "react-table";
+
 import MOCK_DATA from "./MOCK_DATA.json";
 import { COLUMNS, GROUP_COLUMNS } from "./colums";
 
@@ -37,9 +38,8 @@ export const ColumnHiding = () => {
           boxShadow: "0 0 20px rgba(0, 0, 0, 0.15)",
           borderRadius: "8px ",
           width: "90%",
-          // height: "800px",
-          // border: "1px solid black",
         }}
+        className="table-container"
       >
         {/* <div>
         <div>
