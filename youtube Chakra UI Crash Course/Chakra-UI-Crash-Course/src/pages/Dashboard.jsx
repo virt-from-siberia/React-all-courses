@@ -29,8 +29,11 @@ export default function Dashboard() {
         </Box>
         <Box sx={boxStyles}>Hello virt</Box>
       </Container>
+
       <SimpleGrid p="10px" spacing={10} minChildWidth="450px">
-        <Box bg="white" h="200px" border="1px solid"></Box>
+        <Box bg="white" h="200px" border="1px solid">
+          <Text color={{ base: "pink", md: "blue", lg: "green" }}>Hello</Text>
+        </Box>
         <Box bg="white" h="200px" border="1px solid"></Box>
         <Box bg="white" h="200px" border="1px solid"></Box>
         <Box bg="white" h="200px" border="1px solid"></Box>
