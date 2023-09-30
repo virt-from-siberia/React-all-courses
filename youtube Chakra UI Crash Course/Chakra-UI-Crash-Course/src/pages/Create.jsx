@@ -1,3 +1,56 @@
+import { Form, redirect } from "react-router-dom";
+
+import {
+  Box,
+  Checkbox,
+  FormControl,
+  FormHelperText,
+  FormLabel,
+  Input,
+  Textarea,
+  Button,
+} from "@chakra-ui/react";
+
 export default function Create() {
-  return <div>Create</div>;
+  return (
+    <Box maxW="480px">
+      <Form method="post" action="/create">
+        <FormControl isRequired mb="40px">
+          <FormLabel>Task name</FormLabel>
+          <Input type="text" name="title" size="xs" />
+          <FormHelperText>Enter a description task name</FormHelperText>
+        </FormControl>
+
+        <FormControl mb="40px">
+          <FormLabel>Task description:</FormLabel>
+          <Textarea
+            placeholder="enter a description for the task"
+            name="description"
+          />
+        </FormControl>
+
+        <FormControl display="flex" alignItems="center" mb="40px">
+          <Checkbox name="isPriority" size="lg" colorScheme="green" />
+          <FormLabel mb="0" ml="10px">
+            Make this a priority task
+          </FormLabel>
+        </FormControl>
+        <Button type="submit">Submit</Button>
+      </Form>
+    </Box>
+  );
 }
+
+export const createAction = async ({ request }) => {
+  const data = await request.formData();
+
+  const task = {
+    title: data.get("title"),
+    description: data.get("description"),
+    isPriority: data.get("isPriority") === "",
+  };
+
+  console.log("task", task);
+
+  return redirect("/");
+};
