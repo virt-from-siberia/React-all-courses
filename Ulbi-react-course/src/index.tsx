@@ -1,12 +1,11 @@
 import { createRoot } from "react-dom/client";
-import { Counter } from "./components/Counter";
+import { App } from "./App";
 
 const container = document.getElementById("root");
 const root = createRoot(container);
 
 root.render(
-  <div>
-    <h1>Hello, world!!!!</h1>
-    <Counter />
-  </div>
+  <>
+    <App />
+  </>
 );
