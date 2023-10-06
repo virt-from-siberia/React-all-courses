@@ -1,1 +1,1 @@
-4 Подключаем React и настраиваем css в webpack
+5 Настраиваем css modules
