@@ -1,0 +1,1 @@
+(()=>{"use strict";console.log("RANDOM 12123123123123")})();

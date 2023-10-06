@@ -1,1 +1,1 @@
-3 Webpack-dev-server. Переменные окружения (env)
+4 Подключаем React и настраиваем css в webpack
