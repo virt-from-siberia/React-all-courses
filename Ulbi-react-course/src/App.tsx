@@ -6,6 +6,7 @@ import { AboutPage } from "./pages/AboutPage/AboutPage.async";
 
 import "./styles/index.scss";
 import { useTheme } from "./theme/useTheme";
+import { classNames } from "./hepers/classNames/classNames";
 
 export enum Theme {
   LIGHT = "light",
@@ -16,7 +17,7 @@ export const App = () => {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <div className={`app ${theme}`}>
+    <div className={classNames("app", {}, [theme])}>
       <div className="actions">
         <button onClick={toggleTheme}>Toggle theme</button>
         <Link to={"/"}>Главная</Link>
