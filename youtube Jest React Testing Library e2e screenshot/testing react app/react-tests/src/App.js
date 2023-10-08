@@ -5,6 +5,7 @@ import logo from "./logo.svg";
 
 function App() {
   const [data, setData] = useState();
+  const [toggle, setToggle] = useState();
 
   useEffect(() => {
     setTimeout(() => {
