@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import { Button, ButtonGroup } from "@chakra-ui/react";
+
 import { classNames } from "shared/lib/classNames/classNames";
 import { ThemeSwitcher } from "shared/ui/ThemeSwitcher";
 
@@ -24,9 +26,15 @@ export const Sidebar: React.FC<SidebarProps> = (props) => {
         className,
       ])}
     >
-      <button data-testid="sidebar-toggle" onClick={onToggle}>
+      <Button
+        size="sm"
+        data-testid="sidebar-toggle"
+        colorScheme="blue"
+        onClick={onToggle}
+      >
         toggle
-      </button>
+      </Button>
+
       <div className={cls.switcher}>
         <ThemeSwitcher />
       </div>
