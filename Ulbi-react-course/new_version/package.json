@@ -54,6 +54,7 @@
     "@emotion/styled": "^11.11.0",
     "framer-motion": "^10.16.4",
     "react": "^18.2.0",
-    "react-router-dom": "^6.16.0"
+    "react-router-dom": "^6.16.0",
+    "use-react-router-breadcrumbs": "^4.0.1"
   }
 }
