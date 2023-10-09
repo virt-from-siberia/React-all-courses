@@ -1,1 +1,4 @@
-23 Анализ размера банда. BundleAnalyzer
+28 Сайдбар. Состояния кнопки. UI Screenshot test report 
+
+
+23 MINUTES
