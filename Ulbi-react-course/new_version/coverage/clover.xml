@@ -1,23 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1696855121615" clover="3.2.0">
-  <project timestamp="1696855121615" name="All files">
-    <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4" elements="12" coveredelements="12" complexity="0" loc="6" ncloc="6" packages="2" files="2" classes="2"/>
-    <package name="lib.classNames">
+<coverage generated="1696878324920" clover="3.2.0">
+  <project timestamp="1696878324920" name="All files">
+    <metrics statements="31" coveredstatements="24" conditionals="6" coveredconditionals="4" methods="13" coveredmethods="10" elements="50" coveredelements="38" complexity="0" loc="31" ncloc="31" packages="9" files="11" classes="11"/>
+    <package name="config.jest">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="jestEmptyComponent.tsx" path="I:\PROGRAMMING\WEB\GIT\LEARNING\React-all-courses\Ulbi-react-course\new_version\config\jest\jestEmptyComponent.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.app.providers.ThemeProvider">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="index.ts" path="I:\PROGRAMMING\WEB\GIT\LEARNING\React-all-courses\Ulbi-react-course\new_version\src\app\providers\ThemeProvider\index.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="src.app.providers.ThemeProvider.lib">
+      <metrics statements="8" coveredstatements="5" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="1"/>
+      <file name="ThemeContext.ts" path="I:\PROGRAMMING\WEB\GIT\LEARNING\React-all-courses\Ulbi-react-course\new_version\src\app\providers\ThemeProvider\lib\ThemeContext.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+      </file>
+      <file name="useTheme.ts" path="I:\PROGRAMMING\WEB\GIT\LEARNING\React-all-courses\Ulbi-react-course\new_version\src\app\providers\ThemeProvider\lib\useTheme.ts">
+        <metrics statements="6" coveredstatements="3" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
+        <line num="13" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="18" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.app.providers.ThemeProvider.ui">
+      <metrics statements="6" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="0"/>
+      <file name="ThemeProvider.tsx" path="I:\PROGRAMMING\WEB\GIT\LEARNING\React-all-courses\Ulbi-react-course\new_version\src\app\providers\ThemeProvider\ui\ThemeProvider.tsx">
+        <metrics statements="6" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="0"/>
+        <line num="9" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.shared.lib.classNames">
       <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
       <file name="classNames.ts" path="I:\PROGRAMMING\WEB\GIT\LEARNING\React-all-courses\Ulbi-react-course\new_version\src\shared\lib\classNames\classNames.ts">
         <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
-        <line num="8" count="6" type="stmt"/>
-        <line num="12" count="6" type="stmt"/>
-        <line num="13" count="3" type="stmt"/>
+        <line num="8" count="16" type="stmt"/>
+        <line num="12" count="9" type="stmt"/>
+        <line num="13" count="4" type="stmt"/>
       </file>
     </package>
-    <package name="ui.Button">
+    <package name="src.shared.ui.Button">
       <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="Button.tsx" path="I:\PROGRAMMING\WEB\GIT\LEARNING\React-all-courses\Ulbi-react-course\new_version\src\shared\ui\Button\Button.tsx">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="15" count="1" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="16" count="5" type="stmt"/>
+        <line num="18" count="5" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.shared.ui.ThemeSwitcher">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="index.ts" path="I:\PROGRAMMING\WEB\GIT\LEARNING\React-all-courses\Ulbi-react-course\new_version\src\shared\ui\ThemeSwitcher\index.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="src.shared.ui.ThemeSwitcher.ui">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="ThemeSwitcher.tsx" path="I:\PROGRAMMING\WEB\GIT\LEARNING\React-all-courses\Ulbi-react-course\new_version\src\shared\ui\ThemeSwitcher\ui\ThemeSwitcher.tsx">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="17" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.widgets.Sidebar.ui.Sidebar">
+      <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <file name="Sidebar.tsx" path="I:\PROGRAMMING\WEB\GIT\LEARNING\React-all-courses\Ulbi-react-course\new_version\src\widgets\Sidebar\ui\Sidebar\Sidebar.tsx">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="3" type="stmt"/>
+        <line num="14" count="3" type="stmt"/>
+        <line num="16" count="3" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="20" count="3" type="stmt"/>
+      </file>
+      <file name="index.ts" path="I:\PROGRAMMING\WEB\GIT\LEARNING\React-all-courses\Ulbi-react-course\new_version\src\widgets\Sidebar\ui\Sidebar\index.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
   </project>
