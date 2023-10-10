@@ -1,13 +1,22 @@
 import { render, screen, fireEvent } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
 import { Sidebar } from "widgets/Sidebar/ui/Sidebar";
 
 describe("Sidebar", () => {
   test("test render", () => {
-    render(<Sidebar />);
+    render(
+      <MemoryRouter>
+        <Sidebar />
+      </MemoryRouter>
+    );
     expect(screen.queryByTestId("sidebar")).toBeInTheDocument();
   });
   test("toggle sidebar", () => {
-    render(<Sidebar />);
+    render(
+      <MemoryRouter>
+        <Sidebar />
+      </MemoryRouter>
+    );
     const toggleBtn = screen.getByTestId("sidebar-toggle");
     expect(screen.queryByTestId("sidebar")).toBeInTheDocument();
 
