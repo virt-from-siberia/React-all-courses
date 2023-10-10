@@ -16,16 +16,23 @@
   background: var(--overlay-color);
   display: flex;
   align-items: center;
-  justify-self: center;
+  justify-content: center;
 }
 
 .content {
   padding: 20px;
   border-radius: 12px;
   background-color: var(--bg-color);
+  transition: 0.1s transform;
+  transform: scale(0.5);
+  max-width: 60%;
 }
 
 .opened {
   pointer-events: auto;
   opacity: 1;
+
+  .content {
+    transform: scale(1);
+  }
 }
