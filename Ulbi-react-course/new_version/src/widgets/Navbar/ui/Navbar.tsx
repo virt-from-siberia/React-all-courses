@@ -2,7 +2,8 @@ import { classNames } from "shared/lib/classNames/classNames";
 
 import cls from "./Navbar.module.scss";
 import { useCallback, useState } from "react";
-import { Modal } from "widgets/Sidebar/ui/Modal";
+import { Modal } from "shared/ui/Modal";
+import { LoginModal } from "featutres/AuthByUserName";
 interface NavbarProps {
   className?: string;
 }
@@ -10,8 +11,12 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ className }) => {
   const [isAuthModal, setIsAuthModal] = useState(true);
 
-  const onToggleModal = useCallback(() => {
-    setIsAuthModal((prev) => !prev);
+  const onCloseModal = useCallback(() => {
+    setIsAuthModal(false);
+  }, [setIsAuthModal]);
+
+  const onShowModal = useCallback(() => {
+    setIsAuthModal(true);
   }, [setIsAuthModal]);
 
   return (
@@ -23,16 +28,11 @@ export const Navbar: React.FC<NavbarProps> = ({ className }) => {
           padding: "5px",
           borderRadius: "8px",
         }}
-        onClick={() => setIsAuthModal(true)}
+        onClick={() => onShowModal()}
       >
-        toggle modal
+        Войти
       </button>
-      <Modal isOpen={isAuthModal} onClose={onToggleModal}>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur
-        esse expedita consectetur mollitia adipisci modi ex natus nostrum
-        maiores. Ratione aperiam doloremque sed consectetur inventore itaque
-        repellat recusandae, quasi amet.
-      </Modal>
+      <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
       <div className={cls.links}>Navbar</div>
     </div>
   );

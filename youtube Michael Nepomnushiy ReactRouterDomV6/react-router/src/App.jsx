@@ -17,6 +17,8 @@ import { AuthProvider } from "./hoc/AuthProvider";
 import "./App.css";
 
 function App() {
+
+  
   return (
     <div className="App">
       <AuthProvider>
