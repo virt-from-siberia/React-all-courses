@@ -25,8 +25,6 @@ export const loginByUsername = createAsyncThunk<
     thunkAPI.dispatch(userActions.aetAuthData(response.data));
     localStorage.setItem(USER_LOCAL_STORAGE_KEY, JSON.stringify(response.data));
 
-    // thunkAPI.dispatch(userActions.setAuthData(response.data));
-
     return response.data;
   } catch (e) {
     console.log(e);
