@@ -9,11 +9,11 @@ import { Button } from "shared/ui/Button";
 import { Input } from "shared/ui/Input/Input";
 import { loginByUsername } from "featutres/AuthByUserName/model/services/loginByUsername";
 
-interface LoginFormProps {
+export interface LoginFormProps {
   className?: string;
 }
 
-export const LoginForm = memo((props: LoginFormProps) => {
+const LoginForm = memo((props: LoginFormProps) => {
   const dispatch = useAppDispatch();
   const loginForm = useSelector(getLoginState);
   const { username, password, error, isLoading } = loginForm;
@@ -56,3 +56,5 @@ export const LoginForm = memo((props: LoginFormProps) => {
     </div>
   );
 });
+
+export default LoginForm;
