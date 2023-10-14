@@ -10,6 +10,7 @@ interface ModalProps {
   className?: string;
   children?: React.ReactNode;
   element?: HTMLElement;
+  lazy?: boolean;
 }
 
 export const Modal: React.FC<ModalProps> = ({
@@ -18,7 +19,14 @@ export const Modal: React.FC<ModalProps> = ({
   isOpen = false,
   onClose,
   element,
+  lazy,
 }) => {
+  const [isMounted, setIsMounted] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (isOpen) setIsMounted(true);
+  }, [isOpen]);
+
   const closeHandler = useCallback(() => {
     if (onClose) onClose();
   }, [onClose]);
@@ -42,6 +50,8 @@ export const Modal: React.FC<ModalProps> = ({
   const mods: Record<string, boolean> = {
     [cls.opened]: isOpen,
   };
+
+  if (lazy && !isMounted) return null;
 
   return (
     <Portal element={element}>

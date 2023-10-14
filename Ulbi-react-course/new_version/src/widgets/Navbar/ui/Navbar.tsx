@@ -9,7 +9,7 @@ interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ className }) => {
-  const [isAuthModal, setIsAuthModal] = useState(true);
+  const [isAuthModal, setIsAuthModal] = useState(false);
 
   const onCloseModal = useCallback(() => {
     setIsAuthModal(false);
