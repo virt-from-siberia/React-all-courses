@@ -6,12 +6,20 @@ import useBreadcrumbs from "use-react-router-breadcrumbs";
 import { Navbar } from "widgets/Navbar";
 import { Sidebar } from "widgets/Sidebar/ui/Sidebar";
 
+import { useAppDispatch } from "./providers/StoreProvider/config/store";
+
 import "./styles/index.scss";
+import { useEffect } from "react";
+import { userActions } from "entities/User";
 
 const App = () => {
   const { theme } = useTheme();
-
+  const dispatch = useAppDispatch();
   const breadcrumbs = useBreadcrumbs();
+
+  useEffect(() => {
+    dispatch(userActions.initAuthData());
+  }, [dispatch]);
 
   return (
     <div className={classNames("app", {}, [theme])}>
