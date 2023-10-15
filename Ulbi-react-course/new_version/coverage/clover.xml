@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1697308401812" clover="3.2.0">
-  <project timestamp="1697308401812" name="All files">
-    <metrics statements="53" coveredstatements="41" conditionals="9" coveredconditionals="4" methods="25" coveredmethods="15" elements="87" coveredelements="60" complexity="0" loc="53" ncloc="53" packages="20" files="23" classes="23"/>
+<coverage generated="1697391511222" clover="3.2.0">
+  <project timestamp="1697391511222" name="All files">
+    <metrics statements="79" coveredstatements="62" conditionals="19" coveredconditionals="12" methods="33" coveredmethods="19" elements="131" coveredelements="93" complexity="0" loc="79" ncloc="79" packages="27" files="32" classes="32"/>
     <package name="config.jest">
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="jestEmptyComponent.tsx" path="I:\PROGRAMMING\WEB\GIT\LEARNING\React-all-courses\Ulbi-react-course\new_version\config\jest\jestEmptyComponent.tsx">
@@ -72,6 +72,73 @@
         <line num="22" count="1" type="stmt"/>
       </file>
     </package>
+    <package name="src.entities.User">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="index.ts" path="I:\PROGRAMMING\WEB\GIT\LEARNING\React-all-courses\Ulbi-react-course\new_version\src\entities\User\index.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="src.entities.User.model.selectors">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <file name="getUserAuthData.ts" path="I:\PROGRAMMING\WEB\GIT\LEARNING\React-all-courses\Ulbi-react-course\new_version\src\entities\User\model\selectors\getUserAuthData.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.entities.User.model.slice">
+      <metrics statements="9" coveredstatements="4" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="0"/>
+      <file name="userSlice.ts" path="I:\PROGRAMMING\WEB\GIT\LEARNING\React-all-courses\Ulbi-react-course\new_version\src\entities\User\model\slice\userSlice.ts">
+        <metrics statements="9" coveredstatements="4" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.entities.User.model.types">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="user.ts" path="I:\PROGRAMMING\WEB\GIT\LEARNING\React-all-courses\Ulbi-react-course\new_version\src\entities\User\model\types\user.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="src.featutres.AuthByUserName.model.selectors">
+      <metrics statements="6" coveredstatements="6" conditionals="6" coveredconditionals="6" methods="3" coveredmethods="3"/>
+      <file name="getLoginLoading.ts" path="I:\PROGRAMMING\WEB\GIT\LEARNING\React-all-courses\Ulbi-react-course\new_version\src\featutres\AuthByUserName\model\selectors\getLoginLoading.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="2" type="cond" truecount="2" falsecount="0"/>
+      </file>
+      <file name="getLoginPassword.ts" path="I:\PROGRAMMING\WEB\GIT\LEARNING\React-all-courses\Ulbi-react-course\new_version\src\featutres\AuthByUserName\model\selectors\getLoginPassword.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="2" type="cond" truecount="2" falsecount="0"/>
+      </file>
+      <file name="getLoginUsername.ts" path="I:\PROGRAMMING\WEB\GIT\LEARNING\React-all-courses\Ulbi-react-course\new_version\src\featutres\AuthByUserName\model\selectors\getLoginUsername.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="2" type="cond" truecount="2" falsecount="0"/>
+      </file>
+    </package>
+    <package name="src.featutres.AuthByUserName.model.services">
+      <metrics statements="9" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+      <file name="loginByUsername.ts" path="I:\PROGRAMMING\WEB\GIT\LEARNING\React-all-courses\Ulbi-react-course\new_version\src\featutres\AuthByUserName\model\services\loginByUsername.ts">
+        <metrics statements="9" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="23" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+      </file>
+    </package>
     <package name="src.pages.AboutPage">
       <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="index.ts" path="I:\PROGRAMMING\WEB\GIT\LEARNING\React-all-courses\Ulbi-react-course\new_version\src\pages\AboutPage\index.ts">
@@ -122,6 +189,13 @@
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="13" count="1" type="stmt"/>
         <line num="19" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.shared.const">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="localstorage.ts" path="I:\PROGRAMMING\WEB\GIT\LEARNING\React-all-courses\Ulbi-react-course\new_version\src\shared\const\localstorage.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.shared.lib.classNames">
