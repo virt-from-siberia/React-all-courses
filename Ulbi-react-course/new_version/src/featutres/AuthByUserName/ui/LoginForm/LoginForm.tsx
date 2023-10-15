@@ -10,7 +10,10 @@ import { loginByUsername } from "featutres/AuthByUserName/model/services/loginBy
 
 import { Button } from "shared/ui/Button";
 import { Input } from "shared/ui/Input/Input";
-import { DynamicModuleLoader } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
+import {
+  DynamicModuleLoader,
+  ReducersList,
+} from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 
 import { getLoginUsername } from "featutres/AuthByUserName/model/selectors/getLoginUsername";
 import { getLoginPassword } from "featutres/AuthByUserName/model/selectors/getLoginPassword";
@@ -19,6 +22,10 @@ import { getLoginLoading } from "featutres/AuthByUserName/model/selectors/getLog
 export interface LoginFormProps {
   className?: string;
 }
+
+const initialReducers: ReducersList = {
+  loginForm: loginReducer,
+};
 
 const LoginForm = memo((props: LoginFormProps) => {
   const dispatch = useAppDispatch();
@@ -45,7 +52,7 @@ const LoginForm = memo((props: LoginFormProps) => {
   }, [dispatch, password, username]);
 
   return (
-    <DynamicModuleLoader name="loginForm" reducer={loginReducer}>
+    <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
       <div>
         <Input
           type="text"

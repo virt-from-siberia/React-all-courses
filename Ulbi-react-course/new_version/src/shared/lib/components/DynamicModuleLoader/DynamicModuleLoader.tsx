@@ -6,23 +6,38 @@ import { ReduxStoreWithManager } from "app/providers/StoreProvider";
 import { useAppDispatch } from "app/providers/StoreProvider/config/store";
 import { StateSchemaKey } from "app/providers/StoreProvider/config/stateSchema";
 
+export type ReducersList = {
+  [name in StateSchemaKey]?: Reducer;
+};
+
+type ReducersListEntry = [StateSchemaKey, Reducer];
+
 interface DynamicModuleLoaderProps {
   children: React.ReactNode;
-  name: StateSchemaKey;
-  reducer: Reducer;
+  reducers: ReducersList;
+  removeAfterUnmount?: boolean;
 }
 
 export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = (props) => {
-  const { children, name, reducer } = props;
+  const { children, removeAfterUnmount, reducers } = props;
   const dispatch = useAppDispatch();
   const store = useStore() as ReduxStoreWithManager;
 
   useEffect(() => {
-    store.reducerManager.add(name, reducer);
-    dispatch({ type: `@INIT ${name} reducer` });
+    Object.entries(reducers).forEach(([name, reducer]: ReducersListEntry) => {
+      store.reducerManager.add(name, reducer);
+      dispatch({ type: `@INIT ${name} reducer` });
+    });
+
     return () => {
-      store.reducerManager.remove(name);
-      dispatch({ type: `@DESTROY ${name} reducer` });
+      if (removeAfterUnmount) {
+        Object.entries(reducers).forEach(
+          ([name, reducer]: ReducersListEntry) => {
+            store.reducerManager.remove(name);
+            dispatch({ type: `@DESTROY ${name} reducer` });
+          }
+        );
+      }
     };
   }, []);
 
