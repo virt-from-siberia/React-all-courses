@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1697391511222" clover="3.2.0">
-  <project timestamp="1697391511222" name="All files">
-    <metrics statements="79" coveredstatements="62" conditionals="19" coveredconditionals="12" methods="33" coveredmethods="19" elements="131" coveredelements="93" complexity="0" loc="79" ncloc="79" packages="27" files="32" classes="32"/>
+<coverage generated="1697398557533" clover="3.2.0">
+  <project timestamp="1697398557533" name="All files">
+    <metrics statements="85" coveredstatements="68" conditionals="19" coveredconditionals="12" methods="35" coveredmethods="21" elements="139" coveredelements="101" complexity="0" loc="85" ncloc="85" packages="28" files="33" classes="33"/>
     <package name="config.jest">
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="jestEmptyComponent.tsx" path="I:\PROGRAMMING\WEB\GIT\LEARNING\React-all-courses\Ulbi-react-course\new_version\config\jest\jestEmptyComponent.tsx">
@@ -205,6 +205,18 @@
         <line num="8" count="17" type="stmt"/>
         <line num="12" count="3" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.shared.lib.tests.TestAsyncThunk">
+      <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="TestAsyncThunk.ts" path="I:\PROGRAMMING\WEB\GIT\LEARNING\React-all-courses\Ulbi-react-course\new_version\src\shared\lib\tests\TestAsyncThunk\TestAsyncThunk.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
+        <line num="24" count="2" type="stmt"/>
       </file>
     </package>
     <package name="src.shared.ui.AppLink">
