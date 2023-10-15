@@ -1,13 +1,20 @@
-import { memo, useCallback } from "react";
-import { useSelector } from "react-redux";
+import { memo, useCallback, useEffect } from "react";
+import { useSelector, useStore } from "react-redux";
 
 import { useAppDispatch } from "app/providers/StoreProvider/config/store";
-import { loginActions } from "featutres/AuthByUserName/model/slice/loginSlice";
-import { getLoginState } from "featutres/AuthByUserName/model/selectors/getLoginState";
+import {
+  loginActions,
+  loginReducer,
+} from "featutres/AuthByUserName/model/slice/loginSlice";
+import { loginByUsername } from "featutres/AuthByUserName/model/services/loginByUsername";
+import { ReduxStoreWithManager } from "app/providers/StoreProvider";
 
 import { Button } from "shared/ui/Button";
 import { Input } from "shared/ui/Input/Input";
-import { loginByUsername } from "featutres/AuthByUserName/model/services/loginByUsername";
+
+import { getLoginUsername } from "featutres/AuthByUserName/model/selectors/getLoginUsername";
+import { getLoginPassword } from "featutres/AuthByUserName/model/selectors/getLoginPassword";
+import { getLoginLoading } from "featutres/AuthByUserName/model/selectors/getLoginLoading";
 
 export interface LoginFormProps {
   className?: string;
@@ -15,8 +22,20 @@ export interface LoginFormProps {
 
 const LoginForm = memo((props: LoginFormProps) => {
   const dispatch = useAppDispatch();
-  const loginForm = useSelector(getLoginState);
-  const { username, password, error, isLoading } = loginForm;
+  const store = useStore() as ReduxStoreWithManager;
+  const username = useSelector(getLoginUsername);
+  const password = useSelector(getLoginPassword);
+  const isLoading = useSelector(getLoginLoading);
+
+  useEffect(() => {
+    store.reducerManager.add("loginForm", loginReducer);
+    dispatch({ type: "@INIT loginForm reducer" });
+
+    return () => {
+      store.reducerManager.remove("loginForm");
+      dispatch({ type: "@DESTROY loginForm reducer" });
+    };
+  }, []);
 
   const onChangeUsername = useCallback(
     (value: string) => {
