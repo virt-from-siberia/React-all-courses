@@ -8,16 +8,16 @@ import { ErrorBoundary } from "app/providers/ErrorBoundary";
 import { StoreProvider } from "app/providers/StoreProvider";
 
 render(
-  <StoreProvider>
-    <ChakraProvider>
-      <BrowserRouter>
+  <BrowserRouter>
+    <StoreProvider>
+      <ChakraProvider>
         <ErrorBoundary>
           <ThemeProvider>
             <App />
           </ThemeProvider>
         </ErrorBoundary>
-      </BrowserRouter>
-    </ChakraProvider>
-  </StoreProvider>,
+      </ChakraProvider>
+    </StoreProvider>
+  </BrowserRouter>,
   document.getElementById("root")
 );
