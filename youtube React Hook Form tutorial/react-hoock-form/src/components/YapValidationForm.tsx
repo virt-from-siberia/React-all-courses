@@ -31,14 +31,7 @@ export const YapValidationForm = () => {
     resolver: yupResolver(SCHEMA_VALIDATION),
   });
 
-  const {
-    register,
-    handleSubmit,
-    control,
-    formState,
-
-    getValues,
-  } = form;
+  const { register, handleSubmit, control, formState, getValues } = form;
 
   const { errors } = formState;
 

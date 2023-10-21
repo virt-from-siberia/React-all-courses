@@ -27,3 +27,5 @@ export function createReduxStore(initialState?: StateSchema) {
 
 export const useAppDispatch = () =>
   useDispatch<ReturnType<typeof createReduxStore>["dispatch"]>();
+
+export type AppDispatch = ReturnType<typeof createReduxStore>["dispatch"];
