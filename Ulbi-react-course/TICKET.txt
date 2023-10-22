@@ -1,1 +1,1 @@
-39 Модуль профиля. Фетчинг данных. TS strict mode - 15:51
+40 Чиним типы и проект после TS strict mode. ThunkConfig - 27:42
