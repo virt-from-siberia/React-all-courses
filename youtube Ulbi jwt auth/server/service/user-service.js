@@ -8,14 +8,8 @@ const UserDto = require("../dtos/user-dto");
 
 class UserService {
   async registration(email, password) {
+    console.log("Получение репозитория...");
     const userRepository = getRepository(UserModel);
-
-    const candidate = await userRepository.findOne({ email });
-    if (candidate) {
-      throw ApiError.BadRequest(
-        `Пользователь с почтовым адресом ${email} уже существует`
-      );
-    }
 
     const hashPassword = await bcrypt.hash(password, 3);
     const activationLink = uuid.v4(); // v34fa-asfasf-142saf-sa-asf
@@ -35,7 +29,7 @@ class UserService {
     await tokenService.saveToken(userDto.id, tokens.refreshToken);
 
     return {
-      ...toString,
+      ...tokens,
       user: userDto,
     };
   }

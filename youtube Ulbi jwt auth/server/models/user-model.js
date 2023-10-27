@@ -1,6 +1,17 @@
-const { Entity, Column, PrimaryGeneratedColumn } = require("typeorm");
+const { BaseEntity, EntitySchema } = require("typeorm");
 
-const User = Entity("User", {
+const UserSchema = new EntitySchema({
+  name: "User",
+  target: class User extends BaseEntity {
+    constructor() {
+      super();
+      this.id = undefined;
+      this.email = undefined;
+      this.password = undefined;
+      this.isActivated = false;
+      this.activationLink = undefined;
+    }
+  },
   columns: {
     id: {
       primary: true,
@@ -27,4 +38,4 @@ const User = Entity("User", {
   },
 });
 
-module.exports = User;
+module.exports = UserSchema;

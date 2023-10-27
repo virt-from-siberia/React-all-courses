@@ -1,18 +1,24 @@
+const userService = require("../service/user-service");
+
 class UserController {
   async registration(req, res, next) {
     try {
-      const errors = validationResult(req);
-      if (!errors.isEmpty()) {
-        return next(
-          ApiError.BadRequest("Ошибка при валидации", errors.array())
-        );
-      }
       const { email, password } = req.body;
+
+      // Проверка на наличие email и password
+      if (!email || !password) {
+        return res.status(400).json({
+          error: "Необходимо предоставить адрес электронной почты и пароль.",
+        });
+      }
+
       const userData = await userService.registration(email, password);
+
       res.cookie("refreshToken", userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 60 * 1000,
         httpOnly: true,
       });
+
       return res.json(userData);
     } catch (e) {
       next(e);

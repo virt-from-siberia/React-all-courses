@@ -4,6 +4,7 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const connectionManager = require("typeorm").getConnectionManager();
 const router = require("./router/index");
+const path = require("path");
 
 const app = express();
 
@@ -25,9 +26,7 @@ const start = async () => {
       database: "authjwt",
       synchronize: true,
       logging: false,
-      entities: ["models/**/*.ts"],
-      migrations: ["src/migration/**/*.ts"],
-      subscribers: ["src/subscriber/**/*.ts"],
+      entities: [path.join(__dirname, "/models/*{.ts,.js}")],
     });
 
     await connection.connect();

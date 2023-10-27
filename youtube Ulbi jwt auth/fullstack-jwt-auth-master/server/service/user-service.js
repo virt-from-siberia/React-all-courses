@@ -8,7 +8,7 @@ const ApiError = require('../exceptions/api-error');
 
 class UserService {
     async registration(email, password) {
-        const candidate = await UserModel.findOne({email})
+        const candidate = await UserModel.findOneBy({email})
         if (candidate) {
             throw ApiError.BadRequest(`Пользователь с почтовым адресом ${email} уже существует`)
         }
@@ -26,7 +26,7 @@ class UserService {
     }
 
     async activate(activationLink) {
-        const user = await UserModel.findOne({activationLink})
+        const user = await UserModel.findOneBy({activationLink})
         if (!user) {
             throw ApiError.BadRequest('Неккоректная ссылка активации')
         }
@@ -35,7 +35,7 @@ class UserService {
     }
 
     async login(email, password) {
-        const user = await UserModel.findOne({email})
+        const user = await UserModel.findOneBy({email})
         if (!user) {
             throw ApiError.BadRequest('Пользователь с таким email не найден')
         }

@@ -1,12 +1,15 @@
-const {
-  Entity,
-  Column,
-  PrimaryGeneratedColumn,
-  ManyToOne,
-  JoinColumn,
-} = require("typeorm");
+const { BaseEntity, EntitySchema } = require("typeorm");
 
-const Token = Entity("Token", {
+const TokenSchema = new EntitySchema({
+  name: "Token",
+  target: class Token extends BaseEntity {
+    constructor() {
+      super();
+      this.id = undefined;
+      this.refreshToken = undefined;
+      this.userId = undefined;
+    }
+  },
   columns: {
     id: {
       primary: true,
@@ -24,7 +27,7 @@ const Token = Entity("Token", {
   },
   relations: {
     user: {
-      target: "User", // имя сущности User
+      target: "User", // Убедитесь, что это соответствует имени, которое вы использовали в UserSchema
       type: "many-to-one",
       joinColumn: { name: "userId" },
       cascade: true,
@@ -32,4 +35,4 @@ const Token = Entity("Token", {
   },
 });
 
-module.exports = Token;
+module.exports = TokenSchema;
