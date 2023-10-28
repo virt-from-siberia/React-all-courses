@@ -5,6 +5,7 @@ const cookieParser = require("cookie-parser");
 const connectionManager = require("typeorm").getConnectionManager();
 const router = require("./router/index");
 const path = require("path");
+const errorMiddleware = require("./middlewares/error-middleware");
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use("/api", router);
+app.use(errorMiddleware);
 
 const port = process.env.PORT || 5000;
 
