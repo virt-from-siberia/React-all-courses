@@ -1,10 +1,15 @@
+import axios from "axios";
+
 import { makeAutoObservable } from "mobx";
 import { IUser } from "../models/IUser";
 import AuthService from "../services/AuthService";
+import { AuthResponse } from "../models/response/AuthResponse";
+import { API_URL } from "../http";
 
 export default class Store {
   user = {} as IUser;
   isAuth = false;
+  isLoading = false;
 
   constructor() {
     makeAutoObservable(this);
@@ -16,6 +21,10 @@ export default class Store {
 
   setUser(user: IUser) {
     this.user = user;
+  }
+
+  setIsLoading(bool: boolean) {
+    this.isLoading = bool;
   }
 
   async login(email: string, password: string) {
@@ -43,6 +52,7 @@ export default class Store {
   }
 
   async logout() {
+    console.log("logout");
     try {
       await AuthService.logout();
       localStorage.removeItem("token");
@@ -50,6 +60,29 @@ export default class Store {
       this.setUser({} as IUser);
     } catch (error) {
       console.log(error);
+    }
+  }
+
+  async checkAuth() {
+    console.log("checkAuth");
+    try {
+      this.isLoading = true;
+
+      const response = await axios.get<AuthResponse>(`${API_URL}/refresh`, {
+        withCredentials: true,
+      });
+
+      console.log("checkAuth response data", response.data);
+      localStorage.setItem("token", response.data.accessToken);
+
+      this.setAuth(true);
+      this.setUser(response.data.user);
+
+      this.isLoading = false;
+    } catch (error) {
+      console.log("error", error);
+    } finally {
+      this.isLoading = false;
     }
   }
 }
