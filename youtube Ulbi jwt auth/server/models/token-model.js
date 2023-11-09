@@ -27,7 +27,7 @@ const TokenSchema = new EntitySchema({
   },
   relations: {
     user: {
-      target: "User", // Убедитесь, что это соответствует имени, которое вы использовали в UserSchema
+      target: "User",
       type: "many-to-one",
       joinColumn: { name: "userId" },
       cascade: true,

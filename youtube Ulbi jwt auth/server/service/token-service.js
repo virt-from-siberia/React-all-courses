@@ -8,7 +8,7 @@ class TokenService {
       expiresIn: "15s",
     });
     const refreshToken = jwt.sign(payload, process.env.JWT_REFRESH_SECRET, {
-      expiresIn: "30d",
+      expiresIn: "30s",
     });
     return {
       accessToken,
@@ -58,6 +58,7 @@ class TokenService {
   async findToken(refreshToken) {
     const tokenRepository = getRepository(tokenModel);
     const tokenData = await tokenRepository.findOneBy({ refreshToken });
+    console.log("tokenData  ===>", tokenData);
     return tokenData;
   }
 }

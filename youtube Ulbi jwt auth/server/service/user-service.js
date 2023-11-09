@@ -75,10 +75,14 @@ class UserService {
   }
 
   async refresh(refreshToken) {
+    console.log("refresh user-service refreshToken", refreshToken);
     if (!refreshToken) throw ApiError.UnauthorizedError();
 
     const userData = tokenService.validateRefreshToken(refreshToken);
     const tokenFromDb = await tokenService.findToken(refreshToken);
+
+    console.log("userData", userData);
+    console.log("tokenFromDb", tokenFromDb);
     if (!userData || !tokenFromDb) throw ApiError.UnauthorizedError();
 
     const userRepository = getRepository(UserModel);
@@ -87,6 +91,8 @@ class UserService {
     const userDto = new UserDto(user);
 
     const tokens = tokenService.generateTokens({ ...userDto });
+
+    await tokenService.saveToken(userDto.id, tokens.refreshToken);
 
     return {
       ...tokens,
