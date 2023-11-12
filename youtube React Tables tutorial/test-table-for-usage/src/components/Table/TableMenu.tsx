@@ -17,6 +17,8 @@ import { GlobalFilter } from "../GlobalFilter";
 interface TableMenuProps {
   allColumns: any;
   getToggleHideAllColumnsProps: () => object;
+  setGlobalFilter: (filter: string | undefined) => void;
+  globalFilter: string;
 }
 
 export const TableMenu: React.FC<TableMenuProps> = (props) => {
@@ -57,7 +59,7 @@ export const TableMenu: React.FC<TableMenuProps> = (props) => {
                       onChange={element.onChange}
                       isChecked={element.checked}
                     >
-                      {column.Header as any}
+                      {column.Header as string}
                     </Checkbox>
                   </div>
                 );

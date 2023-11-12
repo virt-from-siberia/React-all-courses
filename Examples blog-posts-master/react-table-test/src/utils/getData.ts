@@ -1,23 +1,23 @@
-import { faker } from '@faker-js/faker'
+import { faker } from "@faker-js/faker";
 
 const range = (len: number) => {
-  const arr = []
+  const arr = [];
   for (let i = 0; i < len; i++) {
-    arr.push(i)
+    arr.push(i);
   }
-  return arr
-}
+  return arr;
+};
 
-let _id = 1
-const id = () => _id++
+let _id = 1;
+const id = () => _id++;
 
 const randInt = (min: number, max: number) =>
-  Math.floor(min + Math.random() * (max - min + 1))
+  Math.floor(min + Math.random() * (max - min + 1));
 
-export type User = ReturnType<typeof createUser>
+export type User = ReturnType<typeof createUser>;
 
 const createUser = () => {
-  const statusChance = Math.random()
+  const statusChance = Math.random();
 
   return {
     id: id(),
@@ -28,23 +28,23 @@ const createUser = () => {
     phone: faker.phone.number(),
     address: {
       city: faker.address.cityName(),
-      street: faker.address.streetAddress()
+      street: faker.address.streetAddress(),
     },
     job: {
       position: faker.name.jobTitle(),
-      company: faker.company.name()
+      company: faker.company.name(),
     },
     visits: Math.floor(Math.random() * 100),
     progress: Math.floor(Math.random() * 100),
     status:
       statusChance > 0.66
-        ? 'relationship'
+        ? "relationship"
         : statusChance > 0.33
-        ? 'complicated'
-        : 'single'
-  }
-}
+        ? "complicated"
+        : "single",
+  };
+};
 
-const getData = (len: number) => range(len).map(createUser)
+const getData = (len: number) => range(len).map(createUser);
 
-export default getData
+export default getData;

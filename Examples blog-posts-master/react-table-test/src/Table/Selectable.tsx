@@ -1,15 +1,15 @@
-import getData, { User } from '@/utils/getData'
-import { forwardRef, useEffect, useRef } from 'react'
+import getData, { User } from "@/utils/getData";
+import { forwardRef, useEffect, useRef } from "react";
 import {
   Row,
   TableToggleAllRowsSelectedProps,
   useRowSelect,
-  useTable
-} from 'react-table'
+  useTable,
+} from "react-table";
 // импортируем колонки из компонента сортируемой таблицы
-import { columns } from './Sortable'
+import { columns } from "./Sortable";
 
-const data = getData(10)
+const data = getData(10);
 
 // компонент чекбокса
 export const IndeterminateCheckbox = forwardRef(
@@ -17,19 +17,19 @@ export const IndeterminateCheckbox = forwardRef(
     { indeterminate, ...rest }: Partial<TableToggleAllRowsSelectedProps>,
     ref
   ) => {
-    const defaultRef = useRef<HTMLInputElement | null>(null)
+    const defaultRef = useRef<HTMLInputElement | null>(null);
     const resolvedRef =
-      (ref as React.MutableRefObject<HTMLInputElement | null>) || defaultRef
+      (ref as React.MutableRefObject<HTMLInputElement | null>) || defaultRef;
 
     useEffect(() => {
       if (resolvedRef.current) {
-        resolvedRef.current.indeterminate = indeterminate as boolean
+        resolvedRef.current.indeterminate = indeterminate as boolean;
       }
-    }, [resolvedRef, indeterminate])
+    }, [resolvedRef, indeterminate]);
 
-    return <input type='checkbox' ref={resolvedRef} {...rest} />
+    return <input type="checkbox" ref={resolvedRef} {...rest} />;
   }
-)
+);
 
 export default function Selectable() {
   const {
@@ -40,12 +40,12 @@ export default function Selectable() {
     prepareRow,
     // новые штуки
     selectedFlatRows,
-    state: { selectedRowIds }
+    state: { selectedRowIds },
   } = useTable({ columns, data }, useRowSelect, ({ visibleColumns }) => {
     visibleColumns.push((cols) => [
       // добавляем колонку для выбора строки
       {
-        id: 'selection',
+        id: "selection",
         // компонент заголовка
         // принимает экземпляр таблицы и модель колонки
         Header: ({ getToggleAllRowsSelectedProps }) => (
@@ -55,37 +55,37 @@ export default function Selectable() {
         // принимает экземпляр таблицы и модель ячейки
         Cell: ({ row }: { row: Row<User> }) => (
           <IndeterminateCheckbox {...row.getToggleRowSelectedProps()} />
-        )
+        ),
       },
-      ...cols
-    ])
-  })
+      ...cols,
+    ]);
+  });
 
   return (
     <>
       <h1>Selectable Table</h1>
-      <div className='table-wrapper'>
+      <div className="table-wrapper">
         <table {...getTableProps()}>
           <thead>
             {headerGroups.map((hG) => (
               <tr {...hG.getHeaderGroupProps()}>
                 {hG.headers.map((col) => (
-                  <th {...col.getHeaderProps()}>{col.render('Header')} </th>
+                  <th {...col.getHeaderProps()}>{col.render("Header")} </th>
                 ))}
               </tr>
             ))}
           </thead>
           <tbody {...getTableBodyProps()}>
             {rows.map((row) => {
-              prepareRow(row)
+              prepareRow(row);
 
               return (
                 <tr {...row.getRowProps()}>
                   {row.cells.map((cell) => (
-                    <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
                   ))}
                 </tr>
-              )
+              );
             })}
           </tbody>
         </table>
@@ -105,5 +105,5 @@ export default function Selectable() {
         </pre>
       </div>
     </>
-  )
+  );
 }

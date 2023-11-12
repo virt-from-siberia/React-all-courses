@@ -1,29 +1,40 @@
 import { useState } from "react";
-import { Input } from "@chakra-ui/react";
+import { Box, Input } from "@chakra-ui/react";
 import { useAsyncDebounce } from "react-table";
 
-export const GlobalFilter = ({ filter, setFilter }) => {
-  const [value, setValue] = useState(filter);
+interface GlobalFilterProps {
+  filter: string;
+  setFilter: (filter: string | undefined) => void;
+}
+
+export const GlobalFilter: React.FC<GlobalFilterProps> = ({
+  filter,
+  setFilter,
+}) => {
+  const [value, setValue] = useState<string>(filter);
 
   const DEBOUNCE_TIME = 500;
 
-  const onChange = useAsyncDebounce((val) => {
-    setFilter(val || undefined);
-  }, DEBOUNCE_TIME);
+  const onChange = useAsyncDebounce(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setFilter(e.target.value || undefined);
+    },
+    DEBOUNCE_TIME
+  );
 
   return (
-    <div>
+    <Box>
       <Input
         placeholder="Поиск:"
         size="xs"
         type="text"
         ml="15px"
         value={value || ""}
-        onChange={(e) => {
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           setValue(e.target.value);
-          onChange(e.target.value);
+          onChange(e);
         }}
       />
-    </div>
+    </Box>
   );
 };

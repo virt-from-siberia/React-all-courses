@@ -1,11 +1,21 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useMemo } from "react";
-import { useTable, useSortBy, useFilters, useGlobalFilter } from "react-table";
+import React, { CSSProperties, useMemo } from "react";
+import {
+  useTable,
+  useSortBy,
+  useFilters,
+  useGlobalFilter,
+  ColumnGroup,
+  HeaderGroup,
+  ColumnInstance,
+} from "react-table";
+import { Flex } from "@chakra-ui/react";
+
 import { ColumnProps, useColumns } from "./data/UseColumns";
 import "./table.css";
 import { TableMenu } from "./TableMenu";
-import { Flex } from "@chakra-ui/react";
-import { ColumnFilter } from "./ColumnFilter";
+
+interface TableStyles {}
 
 interface BasicTableProps {
   data: any;
@@ -16,14 +26,30 @@ export const BasicTable: React.FC<BasicTableProps> = (props) => {
   const { data, columns } = props;
   const memoizedColumns = useColumns(columns);
 
-  // const initialState = { hiddenColumns: ["id"] };
-  const initialState = {};
+  const tableContainerStyle: CSSProperties = useMemo(
+    () => ({
+      height: "90vh",
+      overflow: "auto",
+      boxShadow: "0 0 20px rgba(0, 0, 0, 0.15)",
+      borderRadius: "8px",
+      width: "90%",
+      position: "relative",
+    }),
+    []
+  );
 
-  const defaultColumn = useMemo(() => {
-    return {
-      Filter: ColumnFilter,
-    };
-  }, []);
+  const initialState = useMemo(
+    () => ({
+      hiddenColumns: [""],
+    }),
+    []
+  );
+
+  // const defaultColumn = useMemo(() => {
+  //   return {
+  //     Filter: ColumnFilter,
+  //   };
+  // }, []);
 
   const {
     getTableProps,
@@ -38,14 +64,14 @@ export const BasicTable: React.FC<BasicTableProps> = (props) => {
     setGlobalFilter,
   } = useTable(
     {
-      columns: memoizedColumns,
+      columns: memoizedColumns as ColumnGroup[],
       data,
       initialState,
     },
     useFilters,
     useGlobalFilter,
     useSortBy
-  );
+  ) as any;
 
   const { globalFilter } = state;
 
@@ -59,24 +85,12 @@ export const BasicTable: React.FC<BasicTableProps> = (props) => {
           globalFilter={globalFilter}
         />
       </div>
-      <div
-        style={{
-          height: "90vh",
-          overflow: "auto",
-          boxShadow: "0 0 20px rgba(0, 0, 0, 0.15)",
-          borderRadius: "8px",
-          width: "90%",
-          position: "relative",
-        }}
-        className="table-container"
-      >
+      <div style={tableContainerStyle} className="table-container">
         <table {...getTableProps()} className="content-table">
           <thead>
-            {headerGroups.map((headerGroup) => (
+            {headerGroups.map((headerGroup: HeaderGroup<object>) => (
               <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map((column) => {
-                  console.log("column", column);
-
+                {headerGroup.headers.map((column: ColumnInstance<object>) => {
                   return (
                     <th
                       {...column.getHeaderProps({
@@ -97,11 +111,11 @@ export const BasicTable: React.FC<BasicTableProps> = (props) => {
             ))}
           </thead>
           <tbody {...getTableBodyProps()}>
-            {rows.map((row) => {
+            {rows.map((row: any) => {
               prepareRow(row);
               return (
                 <tr {...row.getRowProps()}>
-                  {row.cells.map((cell) => {
+                  {row.cells.map((cell: any) => {
                     return (
                       <td
                         {...cell.getCellProps({
@@ -120,9 +134,9 @@ export const BasicTable: React.FC<BasicTableProps> = (props) => {
             })}
           </tbody>
           <tfoot>
-            {footerGroups.map((footerGroup) => (
+            {footerGroups.map((footerGroup: HeaderGroup) => (
               <tr {...footerGroup.getFooterGroupProps()}>
-                {footerGroup.headers.map((column) => (
+                {footerGroup.headers.map((column: any) => (
                   <td {...column.getFooterProps()}>
                     {column.render("Footer")}
                   </td>

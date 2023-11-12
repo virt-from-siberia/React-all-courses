@@ -1,15 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { ComponentClass, ReactNode } from "react";
-import { HeaderProps, Renderer } from "react-table";
-
-interface CellProps<T> {
-  value: T;
-}
+import React from "react";
 
 export interface ColumnProps {
   title: string;
   accessor: string;
-  CellComponent?: React.FC<CellProps<any>>;
+  CellComponent?: React.FC<any>;
   maxWidth?: number;
   minWidth?: number;
   width?: string | number;
