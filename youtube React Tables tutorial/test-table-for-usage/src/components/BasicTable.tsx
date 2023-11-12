@@ -27,56 +27,67 @@ export const BasicTable = () => {
   } = tableInstance;
 
   return (
-    <table {...getTableProps()} className="content-table">
-      <thead>
-        {headerGroups.map((headerGroup) => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map((column) => (
-              <th
-                {...column.getHeaderProps({
-                  style: { minWidth: column.minWidth, width: column.width },
-                })}
-              >
-                {column.render("Header")}
-                {/* <span>{column.isSortedDesc ? " 🔽" : " 🔼"}</span> */}
-              </th>
-            ))}
-          </tr>
-        ))}
-      </thead>
-      <tbody {...getTableBodyProps()}>
-        {rows.map((row) => {
-          prepareRow(row);
-          return (
-            <tr {...row.getRowProps()}>
-              {row.cells.map((cell) => {
-                console.log("cell.column", cell.column);
-                return (
-                  <td
-                    {...cell.getCellProps({
-                      style: {
-                        minWidth: cell.column.minWidth,
-                        width: cell.column.width,
-                      },
-                    })}
-                  >
-                    {cell.render("Cell")}
-                  </td>
-                );
-              })}
+    <div
+      style={{
+        height: "90vh",
+        overflow: "auto",
+        boxShadow: "0 0 20px rgba(0, 0, 0, 0.15)",
+        borderRadius: "8px ",
+        width: "90%",
+      }}
+      className="table-container"
+    >
+      <table {...getTableProps()} className="content-table">
+        <thead>
+          {headerGroups.map((headerGroup) => (
+            <tr {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map((column) => (
+                <th
+                  {...column.getHeaderProps({
+                    style: { minWidth: column.minWidth, width: column.width },
+                  })}
+                >
+                  {column.render("Header")}
+                  {/* <span>{column.isSortedDesc ? " 🔽" : " 🔼"}</span> */}
+                </th>
+              ))}
             </tr>
-          );
-        })}
-      </tbody>
-      <tfoot>
-        {footerGroups.map((footerGroup) => (
-          <tr {...footerGroup.getFooterGroupProps()}>
-            {footerGroup.headers.map((column) => (
-              <td {...column.getFooterProps()}>{column.render("Footer")}</td>
-            ))}
-          </tr>
-        ))}
-      </tfoot>
-    </table>
+          ))}
+        </thead>
+        <tbody {...getTableBodyProps()}>
+          {rows.map((row) => {
+            prepareRow(row);
+            return (
+              <tr {...row.getRowProps()}>
+                {row.cells.map((cell) => {
+                  console.log("cell.column", cell.column);
+                  return (
+                    <td
+                      {...cell.getCellProps({
+                        style: {
+                          minWidth: cell.column.minWidth,
+                          width: cell.column.width,
+                        },
+                      })}
+                    >
+                      {cell.render("Cell")}
+                    </td>
+                  );
+                })}
+              </tr>
+            );
+          })}
+        </tbody>
+        <tfoot>
+          {footerGroups.map((footerGroup) => (
+            <tr {...footerGroup.getFooterGroupProps()}>
+              {footerGroup.headers.map((column) => (
+                <td {...column.getFooterProps()}>{column.render("Footer")}</td>
+              ))}
+            </tr>
+          ))}
+        </tfoot>
+      </table>
+    </div>
   );
 };

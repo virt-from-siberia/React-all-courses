@@ -30,8 +30,8 @@ export const ColumsOrder = () => {
 
   const changeOrder = () => {
     setColumnOrder([
-      "id",
       "first_name",
+      "id",
       "last_name",
       "phone",
       "date_of_birth",

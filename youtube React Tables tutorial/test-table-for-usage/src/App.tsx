@@ -1,17 +1,19 @@
 import { useState } from "react";
 
-// import { BasicTable } from "./components/BasicTable";
-// import { SortingTable } from "./components/SortingTable";
-// import { FilteringTable } from "./components/FilteringTable";
-// import { ColumsOrder } from "./components/ColumsOrder";
+import { BasicTable } from "./components/BasicTable";
+import { SortingTable } from "./components/SortingTable";
+import { FilteringTable } from "./components/FilteringTable";
+import { ColumsOrder } from "./components/ColumsOrder";
 import { ColumnHiding } from "./components/ColumnHiding";
-// import { StickyTable } from "./components/StickyTable";
-// import { MyVariant } from "./components/MyVariant";
+import { StickyTable } from "./components/StickyTable";
+import { MyVariant } from "./components/MyVariant";
 
 import "./App.css";
+import { TableEntity } from "./components/TableEntity";
 
 function App() {
-  return <>{<ColumnHiding />}</>;
+  return <>{<TableEntity />}</>;
+  // return <>{<FilteringTable />}</>;
 }
 
 export default App;

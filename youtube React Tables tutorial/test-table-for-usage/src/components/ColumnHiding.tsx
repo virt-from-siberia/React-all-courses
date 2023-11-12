@@ -41,26 +41,26 @@ export const ColumnHiding = () => {
         }}
         className="table-container"
       >
-        {/* <div>
         <div>
           <div>
-            <input
-              type="checkbox"
-              id="scales"
-              name="scales"
-              {...getToggleHideAllColumnsProps()}
-            />
-            {allColumns.map((column) => {
-              return (
-                <div key={column.id}>
-                  <input type="checkbox" {...column.getToggleHiddenProps()} />
-                  {column.Header}
-                </div>
-              );
-            })}
+            <div>
+              <input
+                type="checkbox"
+                id="scales"
+                name="scales"
+                {...getToggleHideAllColumnsProps()}
+              />
+              {allColumns.map((column) => {
+                return (
+                  <div key={column.id}>
+                    <input type="checkbox" {...column.getToggleHiddenProps()} />
+                    {column.Header}
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
-      </div> */}
         <table {...getTableProps()} className="content-table">
           <thead>
             {headerGroups.map((headerGroup) => (

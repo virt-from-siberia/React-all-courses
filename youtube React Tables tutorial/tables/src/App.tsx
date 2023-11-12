@@ -7,7 +7,7 @@ import { useState } from "react";
 // import { ColumnHiding } from "./components/ColumnHiding";
 
 import { StickyTable } from "./components/StickyTable";
-// import { MyVariant } from "./components/MyVariant";
+import { MyVariant } from "./components/MyVariant";
 
 import "./App.css";
 
@@ -21,8 +21,8 @@ function App() {
         {/* <SortingTable /> */}
         {/* <ColumsOrder /> */}
         {/* {<ColumnHiding />} */}
-        <StickyTable />
-        {/* <MyVariant /> */}
+        {/* <StickyTable /> */}
+        <MyVariant />
       </div>
     </>
   );
