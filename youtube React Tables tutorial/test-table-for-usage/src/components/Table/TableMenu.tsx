@@ -19,6 +19,7 @@ interface TableMenuProps {
   getToggleHideAllColumnsProps: () => object;
   setGlobalFilter: (filter: string | undefined) => void;
   globalFilter: string;
+  width?: string;
 }
 
 export const TableMenu: React.FC<TableMenuProps> = (props) => {
@@ -27,6 +28,7 @@ export const TableMenu: React.FC<TableMenuProps> = (props) => {
     getToggleHideAllColumnsProps,
     globalFilter,
     setGlobalFilter,
+    width,
   } = props;
 
   interface AllToggle {
@@ -37,7 +39,24 @@ export const TableMenu: React.FC<TableMenuProps> = (props) => {
   const allToggle = getToggleHideAllColumnsProps() as AllToggle;
 
   return (
-    <Flex>
+    <Flex
+      background={"white"}
+      border={"1px solid #f1f1f1"}
+      width={width}
+      bg={"white"}
+      position={"relative"}
+    >
+      <div
+        style={{
+          position: "absolute",
+          width: "100%",
+          height: "1px",
+          background: "#fff",
+          zIndex: 9,
+          top: "26px",
+        }}
+      />
+
       <Menu closeOnSelect={false}>
         <MenuButton size={"xs"} as={Button} rightIcon={<ChevronDownIcon />}>
           <SettingsIcon />

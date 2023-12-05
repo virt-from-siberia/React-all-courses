@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 // import { BasicTable } from "./components/BasicTable";
-// import { SortingTable } from "./components/SortingTable";
+import { SortingTable } from "./components/SortingTable";
 // import { FilteringTable } from "./components/FilteringTable";
 // import { ColumsOrder } from "./components/ColumsOrder";
 import { ColumnHiding } from "./components/ColumnHiding";
@@ -11,7 +11,8 @@ import { ColumnHiding } from "./components/ColumnHiding";
 import "./App.css";
 
 function App() {
-  return <>{<ColumnHiding />}</>;
+  // return <>{<ColumnHiding />}</>;
+  return <>{<SortingTable />}</>;
 }
 
 export default App;

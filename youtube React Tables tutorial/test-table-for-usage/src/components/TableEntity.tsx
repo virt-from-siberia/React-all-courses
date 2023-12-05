@@ -83,9 +83,18 @@ export const TableEntity = () => {
 
   const data = useMemo(() => MOCK_DATA, [MOCK_DATA]);
 
+  const tableProps = {
+    tableStyles: {
+      tableHeight: "90vh",
+      tableWidth: "90%",
+    },
+    data,
+    columns,
+  };
+
   return (
     <>
-      <BasicTable data={data} columns={columns} />
+      <BasicTable {...tableProps} />
     </>
   );
 };

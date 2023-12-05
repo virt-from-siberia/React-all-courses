@@ -15,27 +15,31 @@ import { ColumnProps, useColumns } from "./data/UseColumns";
 import "./table.css";
 import { TableMenu } from "./TableMenu";
 
-interface TableStyles {}
+interface TableStyles {
+  tableHeight?: string;
+  tableWidth?: string;
+}
 
 interface BasicTableProps {
   data: any;
   columns: ColumnProps[];
+  tableStyles: TableStyles;
 }
 
 export const BasicTable: React.FC<BasicTableProps> = (props) => {
-  const { data, columns } = props;
+  const { data, columns, tableStyles } = props;
   const memoizedColumns = useColumns(columns);
 
   const tableContainerStyle: CSSProperties = useMemo(
     () => ({
-      height: "90vh",
+      height: tableStyles?.tableHeight || "300px",
+      width: tableStyles?.tableWidth || "100%",
       overflow: "auto",
       boxShadow: "0 0 20px rgba(0, 0, 0, 0.15)",
       borderRadius: "8px",
-      width: "90%",
       position: "relative",
     }),
-    []
+    [tableStyles]
   );
 
   const initialState = useMemo(
@@ -77,14 +81,14 @@ export const BasicTable: React.FC<BasicTableProps> = (props) => {
 
   return (
     <div>
-      <div>
-        <TableMenu
-          allColumns={allColumns}
-          getToggleHideAllColumnsProps={getToggleHideAllColumnsProps}
-          setGlobalFilter={setGlobalFilter}
-          globalFilter={globalFilter}
-        />
-      </div>
+      <TableMenu
+        width={tableStyles?.tableWidth || "100%"}
+        allColumns={allColumns}
+        getToggleHideAllColumnsProps={getToggleHideAllColumnsProps}
+        setGlobalFilter={setGlobalFilter}
+        globalFilter={globalFilter}
+      />
+
       <div style={tableContainerStyle} className="table-container">
         <table {...getTableProps()} className="content-table">
           <thead>
