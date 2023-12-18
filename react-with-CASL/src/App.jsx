@@ -6,14 +6,9 @@ import { PermissionsEditor } from "./permissions-editor";
 const App = () => {
   const [permissions, setPermissions] = useState({
     Post: ["read", "update", "delete", "add"],
-    Lol: ["read", "update", "delete", "add"],
   });
 
-  console.log("permissions", permissions);
-
   const ability = getAbility(permissions);
-
-  console.log("ability", ability);
 
   return (
     <>
