@@ -1,48 +1,67 @@
 import { useEffect, useState } from "react";
+import { signal, effect } from "@preact/signals-react";
 
 const LOCAL_KEY = "TODOS";
+
+export const todos = signal(getTodos());
+
+const testSignal = signal("");
+
+function getTodos() {
+  const value = localStorage.getItem(LOCAL_KEY);
+  if (value == null) return [];
+  return JSON.parse(value);
+}
+
+effect(() => {
+  localStorage.setItem(LOCAL_KEY, JSON.stringify(todos.value));
+});
 
 export const TodoList = () => {
   console.log("Render TodoList");
 
-  const [todos, setTodos] = useState(() => {
-    const value = localStorage.getItem(LOCAL_KEY);
-    if (value == null) return [];
-    return JSON.parse(value);
-  });
+  // const [todos, setTodos] = useState(() => {
+  //   const value = localStorage.getItem(LOCAL_KEY);
+  //   if (value == null) return [];
+  //   return JSON.parse(value);
+  // });
+
+  // useEffect(() => {
+  //   localStorage.setItem(LOCAL_KEY, JSON.stringify(todos));
+  // }, [todos]);
 
   const [newTodoName, setNewTodoName] = useState("");
 
   function addTodo(e) {
     e.preventDefault();
 
-    setTodos((prevTodos) => {
-      return [
-        ...prevTodos,
-        { id: crypto.randomUUID(), name: newTodoName, completed: false },
-      ];
-    });
-  }
+    todos.value = [
+      ...todos.value,
+      { id: crypto.randomUUID(), name: newTodoName, completed: false },
+    ];
 
-  setNewTodoName("");
+    setNewTodoName("");
+  }
 
   function toggleTodo(id, completed) {
-    setTodos((prevTodos) => {
-      return prevTodos.map((todo) => {
-        if (todo.id === id) {
-          return { ...todo, completed };
-        }
-        return todo;
-      });
+    todos.value = todos.value.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, completed };
+      }
+      return todo;
     });
   }
-
-  useEffect(() => {
-    localStorage.setItem(LOCAL_KEY, JSON.stringify(todos));
-  }, [todos]);
 
   return (
     <>
+      <h1>{name.value}</h1>
+      <input
+        type="text"
+        value={testSignal.value}
+        onChange={(e) => {
+          testSignal.value = e.target.value;
+        }}
+      />
       <form onSubmit={addTodo}>
         <label>New Task</label>
         <input
@@ -52,12 +71,13 @@ export const TodoList = () => {
         />
         <button>Add</button>
       </form>
+      <p>{testSignal.value}</p>
       <ul>
-        {todos.map((todo) => (
+        {todos.value.map((todo) => (
           <li key={todo.id}>
             <label>
               <input
-                type="chekbox"
+                type="checkbox"
                 checked={todo.completed}
                 onChange={(e) => toggleTodo(todo.id, e.target.checked)}
               />

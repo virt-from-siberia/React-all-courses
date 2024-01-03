@@ -8,7 +8,6 @@ import "./App.css";
 
 function App() {
   console.log("Render App");
-  const [count, setCount] = useState(0);
 
   return (
     <div className="wrapper">
