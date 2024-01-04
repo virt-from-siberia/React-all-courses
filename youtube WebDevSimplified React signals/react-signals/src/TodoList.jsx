@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { signal, effect } from "@preact/signals-react";
 
 const LOCAL_KEY = "TODOS";
