@@ -15,5 +15,5 @@ app.use(server);
 
 const PORT = 8080;
 app.listen(PORT, () => {
-  console.log("Server is running on...");
+  console.log("Server is running on...", PORT);
 });
